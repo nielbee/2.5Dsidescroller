@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqcurgklpnxjc"]
+
+[ext_resource type="PackedScene" uid="uid://dk1qee7bnywmw" path="res://objects/Player/Player.tscn" id="1_8faea"]
+[ext_resource type="Texture2D" uid="uid://diif6h0k4mhgk" path="res://assets/Background/layer_1.png" id="2_bstb1"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_egcar"]
+panorama = ExtResource("2_bstb1")
+filter = false
+energy_multiplier = 0.3
+
+[sub_resource type="Sky" id="Sky_s8mvx"]
+sky_material = SubResource("PanoramaSkyMaterial_egcar")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_uqhyv"]
+background_mode = 2
+sky = SubResource("Sky_s8mvx")
+glow_enabled = true
+glow_intensity = 2.52
+
+[node name="debugLevel" type="Node3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+use_collision = true
+collision_layer = 2
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4503326, -0.98281264, -0.19250488)
+size = Vector3(9.900665, 1, 1)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7719574, 2.9982665, -0.19250488)
+size = Vector3(0.39857483, 5.6364746, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_8faea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3684864, -0.24623108, -0.15899658)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uqhyv")
