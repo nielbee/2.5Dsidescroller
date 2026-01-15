@@ -1,8 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://dk1qee7bnywmw"]
+[gd_scene load_steps=66 format=3 uid="uid://dk1qee7bnywmw"]
 
 [ext_resource type="Script" uid="uid://db0jcve473eo5" path="res://objects/Player/scripts/player.gd" id="1_6cwl5"]
 [ext_resource type="Texture2D" uid="uid://cl6okq46e872d" path="res://assets/character/png/red/char_red_1.png" id="2_3voyg"]
 [ext_resource type="Texture2D" uid="uid://cj7w1c052vto4" path="res://assets/character/png/red/char_red_2.png" id="3_jp6ib"]
+[ext_resource type="CameraAttributesPractical" uid="uid://chl4rmptheup7" path="res://resources/cameraeffects.tres" id="4_i118q"]
 [ext_resource type="Script" uid="uid://dy1sdl4vn68of" path="res://addons/statemanager/state_machine.gd" id="4_jp6ib"]
 [ext_resource type="Script" uid="uid://c8cyt3tbgrkll" path="res://objects/Player/scripts/idle.gd" id="5_b20bf"]
 [ext_resource type="Script" uid="uid://b1a6rl7x4aq6y" path="res://objects/Player/scripts/run.gd" id="6_fca01"]
@@ -465,12 +466,16 @@ shape = SubResource("CapsuleShape3D_gndvh")
 
 [node name="sprites" type="AnimatedSprite3D" parent="."]
 billboard = 1
+shaded = true
+alpha_cut = 2
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0thri")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33026826, 1.5584555)
+attributes = ExtResource("4_i118q")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jp6ib")

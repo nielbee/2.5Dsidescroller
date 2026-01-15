@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://ye5y6jod8p22"]
+
+[ext_resource type="Material" uid="uid://boqecqhyjt5wm" path="res://resources/spritematerial.tres" id="1_nycx6"]
+[ext_resource type="Texture2D" uid="uid://d0ycuh0wyftko" path="res://assets/decorations/shop_anim.png" id="2_nycx6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yomd4"]
+atlas = ExtResource("2_nycx6")
+region = Rect2(0, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgdrb"]
+atlas = ExtResource("2_nycx6")
+region = Rect2(118, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gil1u"]
+atlas = ExtResource("2_nycx6")
+region = Rect2(236, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmo3w"]
+atlas = ExtResource("2_nycx6")
+region = Rect2(354, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hay78"]
+atlas = ExtResource("2_nycx6")
+region = Rect2(472, 0, 118, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_438xj"]
+atlas = ExtResource("2_nycx6")
+region = Rect2(590, 0, 118, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qi3e4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yomd4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgdrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gil1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmo3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hay78")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_438xj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="shop" type="AnimatedSprite3D"]
+material_overlay = ExtResource("1_nycx6")
+sprite_frames = SubResource("SpriteFrames_qi3e4")
+autoplay = "default"
+frame_progress = 0.30809394

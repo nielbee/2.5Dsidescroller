@@ -1,39 +1,62 @@
-[gd_scene load_steps=6 format=3 uid="uid://dqcurgklpnxjc"]
+[gd_scene load_steps=9 format=3 uid="uid://dqcurgklpnxjc"]
 
 [ext_resource type="PackedScene" uid="uid://dk1qee7bnywmw" path="res://objects/Player/Player.tscn" id="1_8faea"]
 [ext_resource type="Texture2D" uid="uid://diif6h0k4mhgk" path="res://assets/Background/layer_1.png" id="2_bstb1"]
+[ext_resource type="PackedScene" uid="uid://clc8s1qmb1iat" path="res://objects/decors/lamp.tscn" id="3_egcar"]
+[ext_resource type="PackedScene" uid="uid://ye5y6jod8p22" path="res://objects/decors/shop.tscn" id="4_s8mvx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bstb1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_egcar"]
 panorama = ExtResource("2_bstb1")
-filter = false
-energy_multiplier = 0.3
 
 [sub_resource type="Sky" id="Sky_s8mvx"]
 sky_material = SubResource("PanoramaSkyMaterial_egcar")
-radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_uqhyv"]
 background_mode = 2
 sky = SubResource("Sky_s8mvx")
+tonemap_mode = 3
+tonemap_exposure = 0.69
+ssao_radius = 4.37
+ssao_intensity = 5.16
 glow_enabled = true
-glow_intensity = 2.52
+glow_bloom = 0.45
 
 [node name="debugLevel" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+material_overlay = SubResource("StandardMaterial3D_bstb1")
 use_collision = true
 collision_layer = 2
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4503326, -0.98281264, -0.19250488)
-size = Vector3(9.900665, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4503326, -0.98281264, -1.8140869)
+size = Vector3(9.900665, 1, 4.243164)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7719574, 2.9982665, -0.19250488)
-size = Vector3(0.39857483, 5.6364746, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7719574, 2.9982665, 0.74102783)
+size = Vector3(0.39857483, 5.6364746, 2.8670654)
 
 [node name="Player" parent="." instance=ExtResource("1_8faea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3684864, 2.1764984, -0.15899658)
 
+[node name="Sprite3D" parent="." instance=ExtResource("3_egcar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3668213, -0.19791016, -0.62506104)
+
+[node name="Sprite3D2" parent="." instance=ExtResource("3_egcar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8458252, -0.19791016, -0.62506104)
+
+[node name="Sprite3D3" parent="." instance=ExtResource("3_egcar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4876099, -0.19791016, -0.62506104)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.8216569, -0.293665, 0.4885088, 0, 0.8570594, 0.51521766, -0.5699824, -0.42333212, 0.7042088, 7.5221944, 2.357769, 4.138)
+shadow_enabled = true
+shadow_blur = 0.6
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uqhyv")
+
+[node name="shop" parent="." instance=ExtResource("4_s8mvx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9582672, 0.12436935, -0.78437805)
