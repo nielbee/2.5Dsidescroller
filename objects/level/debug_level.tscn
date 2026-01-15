@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7719574, 2.9982665, -0.192
 size = Vector3(0.39857483, 5.6364746, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_8faea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3684864, -0.24623108, -0.15899658)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3684864, 2.1764984, -0.15899658)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uqhyv")

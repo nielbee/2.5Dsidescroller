@@ -1,8 +1,12 @@
-[gd_scene load_steps=61 format=3 uid="uid://dk1qee7bnywmw"]
+[gd_scene load_steps=65 format=3 uid="uid://dk1qee7bnywmw"]
 
 [ext_resource type="Script" uid="uid://db0jcve473eo5" path="res://objects/Player/scripts/player.gd" id="1_6cwl5"]
 [ext_resource type="Texture2D" uid="uid://cl6okq46e872d" path="res://assets/character/png/red/char_red_1.png" id="2_3voyg"]
 [ext_resource type="Texture2D" uid="uid://cj7w1c052vto4" path="res://assets/character/png/red/char_red_2.png" id="3_jp6ib"]
+[ext_resource type="Script" uid="uid://dy1sdl4vn68of" path="res://addons/statemanager/state_machine.gd" id="4_jp6ib"]
+[ext_resource type="Script" uid="uid://c8cyt3tbgrkll" path="res://objects/Player/scripts/idle.gd" id="5_b20bf"]
+[ext_resource type="Script" uid="uid://b1a6rl7x4aq6y" path="res://objects/Player/scripts/run.gd" id="6_fca01"]
+[ext_resource type="Script" uid="uid://cpnrfq2x6vbks" path="res://objects/Player/scripts/fall.gd" id="7_b20bf"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gndvh"]
 radius = 0.06542969
@@ -467,3 +471,20 @@ autoplay = "idle"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33026826, 1.5584555)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_jp6ib")
+initial_state = NodePath("fall")
+metadata/_custom_type_script = "uid://dy1sdl4vn68of"
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_b20bf")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="run" type="Node" parent="StateMachine"]
+script = ExtResource("6_fca01")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="fall" type="Node" parent="StateMachine"]
+script = ExtResource("7_b20bf")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
