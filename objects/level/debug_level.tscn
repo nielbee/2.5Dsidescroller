@@ -1,11 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqcurgklpnxjc"]
+[gd_scene load_steps=40 format=3 uid="uid://dqcurgklpnxjc"]
 
 [ext_resource type="PackedScene" uid="uid://dk1qee7bnywmw" path="res://objects/Player/Player.tscn" id="1_8faea"]
+[ext_resource type="PackedScene" uid="uid://2grbemco32wh" path="res://objects/decors/fence.tscn" id="1_uqhyv"]
 [ext_resource type="Texture2D" uid="uid://diif6h0k4mhgk" path="res://assets/Background/layer_1.png" id="2_bstb1"]
 [ext_resource type="PackedScene" uid="uid://clc8s1qmb1iat" path="res://objects/decors/lamp.tscn" id="3_egcar"]
 [ext_resource type="PackedScene" uid="uid://ye5y6jod8p22" path="res://objects/decors/shop.tscn" id="4_s8mvx"]
+[ext_resource type="PackedScene" uid="uid://ws1j6w7pvylv" path="res://objects/decors/tree.tscn" id="7_toy2j"]
+[ext_resource type="Script" uid="uid://b8qf4hxbljck0" path="res://addons/proton_scatter/src/scatter.gd" id="8_6ycdi"]
+[ext_resource type="Script" uid="uid://dp5adbcgxc73o" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="9_widb4"]
+[ext_resource type="Script" uid="uid://drbmv7dpxbtsu" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="10_a6s5v"]
+[ext_resource type="Script" uid="uid://cve6y7excn6ww" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="11_mtih1"]
+[ext_resource type="Script" uid="uid://crvwjl7c4vh24" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="12_vbbet"]
+[ext_resource type="Script" uid="uid://coga3fc3dn5u0" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="13_xewdk"]
+[ext_resource type="Script" uid="uid://bmu187lqm0ac" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="14_emsx0"]
+[ext_resource type="Script" uid="uid://cbt5kktrkybr0" path="res://addons/proton_scatter/src/scatter_item.gd" id="15_k6avw"]
+[ext_resource type="Script" uid="uid://xh0ypd3bt104" path="res://addons/proton_scatter/src/scatter_shape.gd" id="16_xm6tv"]
+[ext_resource type="Texture2D" uid="uid://du60oh5unpl60" path="res://assets/Background/layer_2.png" id="17_6ycdi"]
+[ext_resource type="Script" uid="uid://b8sx7q8dxk61p" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="17_b5ehm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bstb1"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ijri8"]
+size = Vector2(1000, 300)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ijri8"]
+data = PackedVector3Array(500, 0, 500, -500, 0, 500, 500, 0, -500, -500, 0, 500, -500, 0, -500, 500, 0, -500)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6ycdi"]
+data = PackedVector3Array(500, 0, 500, -500, 0, 500, 500, 0, -500, -500, 0, 500, -500, 0, -500, 500, 0, -500)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_egcar"]
 panorama = ExtResource("2_bstb1")
@@ -23,6 +45,83 @@ ssao_intensity = 5.16
 glow_enabled = true
 glow_bloom = 0.45
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msf8n"]
+albedo_color = Color(0.21965802, 0.21965805, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lvvot"]
+size = Vector2(50, 50)
+
+[sub_resource type="Curve" id="Curve_ijri8"]
+_data = [Vector2(0.011764713, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6ycdi"]
+curve = SubResource("Curve_ijri8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_widb4"]
+lifetime_randomness = 0.18
+emission_shape_scale = Vector3(3, 1, 3)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -162.59999
+angle_max = 195.80002
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_6ycdi")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6s5v"]
+vertex_color_use_as_albedo = true
+metallic_specular = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_mtih1"]
+material = SubResource("StandardMaterial3D_a6s5v")
+size = Vector2(0.05, 0.05)
+
+[sub_resource type="Skin" id="Skin_vbbet"]
+
+[sub_resource type="Resource" id="Resource_6ycdi"]
+script = ExtResource("11_mtih1")
+amount = 75
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_widb4"]
+script = ExtResource("12_vbbet")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.1, 0.1, 0.1)
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_a6s5v"]
+script = ExtResource("13_xewdk")
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+restrict_height = true
+
+[sub_resource type="Resource" id="Resource_mtih1"]
+script = ExtResource("14_emsx0")
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+
+[sub_resource type="Resource" id="Resource_vbbet"]
+script = ExtResource("9_widb4")
+stack = Array[ExtResource("10_a6s5v")]([SubResource("Resource_6ycdi"), SubResource("Resource_widb4"), SubResource("Resource_a6s5v"), SubResource("Resource_mtih1")])
+
+[sub_resource type="Curve3D" id="Curve3D_xewdk"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -23.52726, 0, -1.2878413, 0, 0, 0, 0, 0, 0, 30.241215, 0, -1.1854258),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_emsx0"]
+script = ExtResource("17_b5ehm")
+thickness = 11.0
+curve = SubResource("Curve3D_xewdk")
+metadata/_custom_type_script = "uid://b8sx7q8dxk61p"
+
 [node name="debugLevel" type="Node3D"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -30,13 +129,30 @@ material_overlay = SubResource("StandardMaterial3D_bstb1")
 use_collision = true
 collision_layer = 2
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4503326, -0.98281264, -1.8140869)
-size = Vector3(9.900665, 1, 4.243164)
+[node name="fence" parent="CSGCombiner3D" instance=ExtResource("1_uqhyv")]
+transform = Transform3D(-0.12715115, 0, 0.99188334, 0, 1, 0, -0.99188334, 0, -0.12715115, 3.840973, -0.3877881, -0.8304372)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7719574, 2.9982665, 0.74102783)
-size = Vector3(0.39857483, 5.6364746, 2.8670654)
+[node name="fence2" parent="CSGCombiner3D" instance=ExtResource("1_uqhyv")]
+transform = Transform3D(-0.12715115, 0, 0.99188334, 0, 1, 0, -0.99188334, 0, -0.12715115, 1.9855042, -0.3877881, -0.8304372)
+
+[node name="fence3" parent="CSGCombiner3D" instance=ExtResource("1_uqhyv")]
+transform = Transform3D(0.9996679, 0, -0.025775686, 0, 1, 0, 0.025775686, 0, 0.9996679, 1.9855042, -0.3877881, -0.5311208)
+
+[node name="fence4" parent="CSGCombiner3D" instance=ExtResource("1_uqhyv")]
+transform = Transform3D(0.9996679, 0, -0.025775686, 0, 1, 0, 0.025775686, 0, 0.9996679, 3.8475037, -0.3877881, -0.5311208)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4873352, 43.016846)
+mesh = SubResource("PlaneMesh_ijri8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGCombiner3D/MeshInstance3D"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D/MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ijri8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGCombiner3D"]
+shape = SubResource("ConcavePolygonShape3D_6ycdi")
 
 [node name="Player" parent="." instance=ExtResource("1_8faea")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3684864, 2.1764984, -0.15899658)
@@ -45,18 +161,89 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3684864, 2.1764984, -0.1589
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3668213, -0.19791016, -0.62506104)
 
 [node name="Sprite3D2" parent="." instance=ExtResource("3_egcar")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8458252, -0.19791016, -0.62506104)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4509888, -0.19791016, 0.35247803)
+
+[node name="Sprite3D4" parent="." instance=ExtResource("3_egcar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6904907, -0.19791016, 0.35247803)
 
 [node name="Sprite3D3" parent="." instance=ExtResource("3_egcar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4876099, -0.19791016, -0.62506104)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.8216569, -0.293665, 0.4885088, 0, 0.8570594, 0.51521766, -0.5699824, -0.42333212, 0.7042088, 7.5221944, 2.357769, 4.138)
+light_color = Color(0.8285063, 0.6092888, 0.4491588, 1)
+light_angular_distance = 3.99
 shadow_enabled = true
-shadow_blur = 0.6
+shadow_bias = 1.049
+shadow_opacity = 0.49
+directional_shadow_max_distance = 2.6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uqhyv")
 
 [node name="shop" parent="." instance=ExtResource("4_s8mvx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9582672, 0.12436935, -0.78437805)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.57769775, -0.45309448, -0.6800232)
+visible = false
+material_override = SubResource("StandardMaterial3D_msf8n")
+mesh = SubResource("PlaneMesh_lvvot")
+
+[node name="tree" parent="." instance=ExtResource("7_toy2j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8046875, 0.27243257, -0.89941406)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6939697, 0, 0)
+amount = 10
+sub_emitter = NodePath(".")
+lifetime = 0.22
+preprocess = 0.66
+randomness = 0.16
+local_coords = true
+transform_align = 3
+trail_lifetime = 1.6300000000000001
+process_material = SubResource("ParticleProcessMaterial_widb4")
+draw_pass_1 = SubResource("QuadMesh_mtih1")
+draw_skin = SubResource("Skin_vbbet")
+
+[node name="background" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -8.9602585, 3.6074142, -10.385986)
+alpha_cut = 3
+alpha_scissor_threshold = 1.0
+alpha_hash_scale = 0.94
+texture_filter = 0
+texture = ExtResource("17_6ycdi")
+
+[node name="background2" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 22.426552, 3.6074142, -10.385986)
+alpha_cut = 3
+alpha_scissor_threshold = 1.0
+alpha_hash_scale = 0.94
+texture_filter = 0
+texture = ExtResource("17_6ycdi")
+
+[node name="background3" type="Sprite3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 54.785744, 3.6074142, -10.385986)
+alpha_cut = 3
+alpha_scissor_threshold = 1.0
+alpha_hash_scale = 0.94
+texture_filter = 0
+texture = ExtResource("17_6ycdi")
+
+[node name="ProtonScatter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47424316, -5.532837)
+script = ExtResource("8_6ycdi")
+modifier_stack = SubResource("Resource_vbbet")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+metadata/_custom_type_script = "uid://b8qf4hxbljck0"
+
+[node name="ScatterItem" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("15_k6avw")
+path = "uid://he5hvriur8ct"
+
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("16_xm6tv")
+shape = SubResource("Resource_emsx0")

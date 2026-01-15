@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://2grbemco32wh"]
+
+[ext_resource type="Texture2D" uid="uid://mm2v7kwbvb8l" path="res://assets/decorations/fence_2.png" id="1_vc7yn"]
+
+[node name="fence" type="Sprite3D"]
+shaded = true
+alpha_cut = 3
+alpha_scissor_threshold = 1.0
+texture_filter = 0
+texture = ExtResource("1_vc7yn")

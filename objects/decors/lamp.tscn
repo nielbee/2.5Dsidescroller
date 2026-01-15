@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://boqecqhyjt5wm" path="res://resources/spritematerial.tres" id="1_ynj3m"]
 
 [node name="Sprite3D" type="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.009490967)
 material_overlay = ExtResource("1_ynj3m")
 shaded = true
 alpha_cut = 2
@@ -11,7 +12,15 @@ texture_filter = 0
 texture = ExtResource("1_g8si8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051818848, 0.096069336, 0.066101074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051818848, 0.096069336, 0.021270752)
+light_color = Color(0.85871583, 0.5087079, 0.11726191, 1)
+light_energy = 0.6
+light_volumetric_fog_energy = 5.4
+shadow_enabled = true
+omni_range = 1.7655791
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.051818848, 0.096069336, -0.02154541)
 light_color = Color(0.85871583, 0.5087079, 0.11726191, 1)
 light_energy = 0.6
 light_volumetric_fog_energy = 5.4

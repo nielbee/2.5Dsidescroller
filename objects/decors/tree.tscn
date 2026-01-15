@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ws1j6w7pvylv"]
+
+[ext_resource type="Texture2D" uid="uid://bt6oj01afbi6k" path="res://assets/Decorations/TX Village Props.png" id="1_wkflk"]
+
+[node name="tree" type="Sprite3D"]
+billboard = 1
+shaded = true
+alpha_cut = 2
+texture_filter = 0
+texture = ExtResource("1_wkflk")
+region_enabled = true
+region_rect = Rect2(686.54675, 460.63287, 133.63641, 151.04413)

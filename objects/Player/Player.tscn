@@ -460,6 +460,17 @@ animations = [{
 collision_mask = 2
 script = ExtResource("1_6cwl5")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12526459, 0.15153074)
+light_color = Color(1, 1, 0.3764706, 1)
+light_energy = 0.392
+light_indirect_energy = 0.291
+shadow_enabled = true
+shadow_bias = 0.67
+shadow_transmittance_bias = -7.646
+shadow_opacity = 0.18
+omni_range = 0.48355135
+
 [node name="body_collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16630554, 0)
 shape = SubResource("CapsuleShape3D_gndvh")
@@ -476,6 +487,9 @@ autoplay = "idle"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33026826, 1.5584555)
 attributes = ExtResource("4_i118q")
+fov = 63.0
+size = 4.658
+near = 0.002
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jp6ib")

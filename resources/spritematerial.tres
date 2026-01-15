@@ -5,3 +5,5 @@ transparency = 2
 alpha_scissor_threshold = 1.0
 alpha_antialiasing_mode = 2
 alpha_antialiasing_edge = 0.0
+cull_mode = 1
+depth_draw_mode = 1

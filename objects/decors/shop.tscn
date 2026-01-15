@@ -57,4 +57,16 @@ animations = [{
 material_overlay = ExtResource("1_nycx6")
 sprite_frames = SubResource("SpriteFrames_qi3e4")
 autoplay = "default"
-frame_progress = 0.30809394
+frame_progress = 0.96315163
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4790039, -0.3653965, 0.071777344)
+light_color = Color(0.76872885, 0.40202928, 0, 1)
+shadow_enabled = true
+omni_range = 0.5333068
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49243164, -0.3653965, 0.071777344)
+light_color = Color(0.76872885, 0.40202928, 0, 1)
+shadow_enabled = true
+omni_range = 0.5333068
