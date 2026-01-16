@@ -11,5 +11,6 @@ func enter()->void:
 	sprite.play("block")
 	
 func update(_delta:float)->void:
-	if Input.is_action_just_released("slide"):
+	body.velocity.x = 0
+	if Input.is_action_just_released("block"):
 		statemanager.change_state("idle")

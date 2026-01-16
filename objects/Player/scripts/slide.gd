@@ -8,6 +8,7 @@ const SPEED = 2.6
 @onready var bufferjump := false
 
 func enter()->void:
+	$"../../slideParticle".emitting = true	
 	if sprite.flip_h == true:
 		slidedirection =-1
 	else :

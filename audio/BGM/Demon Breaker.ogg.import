@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dqup87w1i70lx"
+path="res://.godot/imported/Demon Breaker.ogg-ff01e2e197a78de0ade0f606424ed224.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/BGM/Demon Breaker.ogg"
+dest_files=["res://.godot/imported/Demon Breaker.ogg-ff01e2e197a78de0ade0f606424ed224.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

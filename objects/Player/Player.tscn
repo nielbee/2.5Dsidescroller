@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dk1qee7bnywmw"]
+[gd_scene load_steps=76 format=3 uid="uid://dk1qee7bnywmw"]
 
 [ext_resource type="Script" uid="uid://db0jcve473eo5" path="res://objects/Player/scripts/player.gd" id="1_6cwl5"]
 [ext_resource type="Texture2D" uid="uid://cl6okq46e872d" path="res://assets/character/png/red/char_red_1.png" id="2_3voyg"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://ln0cg6u3x6f3" path="res://objects/Player/scripts/jump.gd" id="9_vl5w5"]
 [ext_resource type="Script" uid="uid://3m8ha7ligv6m" path="res://objects/Player/scripts/slide.gd" id="10_c6no5"]
 [ext_resource type="Script" uid="uid://7cgavgo0oaeu" path="res://objects/Player/scripts/block.gd" id="11_l5urc"]
+[ext_resource type="Script" uid="uid://lsnelmgfjfsi" path="res://objects/Player/scripts/attack_1.gd" id="12_637ke"]
+[ext_resource type="Script" uid="uid://ckw80l7kuylh1" path="res://objects/Player/scripts/attack_2.gd" id="13_6bo4k"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vl5w5"]
 size = Vector3(0.09350586, 0.23120117, 1)
@@ -458,20 +460,38 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bo4k"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5764706, 0.6745098, 0, 0.96862745)
+metallic_specular = 0.43
+roughness = 0.29
+
+[sub_resource type="Curve" id="Curve_6bo4k"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_15whd"]
+curve = SubResource("Curve_6bo4k")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6a83f"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.2
+emission_ring_radius = 0.0
+emission_ring_inner_radius = 0.08
+emission_ring_cone_angle = 90.0
+spread = 0.0
+gravity = Vector3(0, 0.4, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 0.99999774
+scale_curve = SubResource("CurveTexture_15whd")
+
+[sub_resource type="QuadMesh" id="QuadMesh_40r7n"]
+size = Vector2(0.02, 0.02)
+
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 2
 script = ExtResource("1_6cwl5")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12526459, 0.15153074)
-light_color = Color(1, 1, 0.3764706, 1)
-light_energy = 0.392
-light_indirect_energy = 0.291
-shadow_enabled = true
-shadow_bias = 0.67
-shadow_transmittance_bias = -7.646
-shadow_opacity = 0.18
-omni_range = 0.48355135
 
 [node name="body_collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012573242, -0.16545105, 0)
@@ -483,8 +503,10 @@ shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0thri")
-animation = &"block"
+animation = &"slide"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33026826, 1.5584555)
@@ -521,3 +543,22 @@ metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 [node name="block" type="Node" parent="StateMachine"]
 script = ExtResource("11_l5urc")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="attack1" type="Node" parent="StateMachine"]
+script = ExtResource("12_637ke")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="attack2" type="Node" parent="StateMachine"]
+script = ExtResource("13_6bo4k")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="slideParticle" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25695163, 0)
+material_override = SubResource("StandardMaterial3D_6bo4k")
+emitting = false
+amount = 30
+sub_emitter = NodePath(".")
+lifetime = 0.6
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_6a83f")
+draw_pass_1 = SubResource("QuadMesh_40r7n")

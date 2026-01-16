@@ -12,5 +12,7 @@ func update(_delta:float)->void:
 		statemanager.change_state("run")
 	if Input.is_action_just_pressed("jump") and body.is_on_floor():
 		statemanager.change_state("jump")
-	if body.is_on_floor() and Input.is_action_just_pressed("slide"):
+	if body.is_on_floor() and Input.is_action_just_pressed("block"):
 		statemanager.change_state("block")
+	if Input.is_action_just_pressed("attack"):
+		statemanager.change_state("attack1")

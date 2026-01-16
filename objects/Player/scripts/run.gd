@@ -19,3 +19,7 @@ func update(_delta:float)->void:
 		statemanager.change_state("jump")
 	if Input.is_action_just_pressed("slide") and body.is_on_floor():
 		statemanager.change_state("slide")
+	if Input.is_action_just_pressed("block") and body.is_on_floor():
+		statemanager.change_state("block")
+	if Input.is_action_just_pressed("attack"):
+		statemanager.change_state("attack1")
