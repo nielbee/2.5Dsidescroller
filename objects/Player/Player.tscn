@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dk1qee7bnywmw"]
+[gd_scene load_steps=69 format=3 uid="uid://dk1qee7bnywmw"]
 
 [ext_resource type="Script" uid="uid://db0jcve473eo5" path="res://objects/Player/scripts/player.gd" id="1_6cwl5"]
 [ext_resource type="Texture2D" uid="uid://cl6okq46e872d" path="res://assets/character/png/red/char_red_1.png" id="2_3voyg"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://c8cyt3tbgrkll" path="res://objects/Player/scripts/idle.gd" id="5_b20bf"]
 [ext_resource type="Script" uid="uid://b1a6rl7x4aq6y" path="res://objects/Player/scripts/run.gd" id="6_fca01"]
 [ext_resource type="Script" uid="uid://cpnrfq2x6vbks" path="res://objects/Player/scripts/fall.gd" id="7_b20bf"]
+[ext_resource type="Script" uid="uid://ln0cg6u3x6f3" path="res://objects/Player/scripts/jump.gd" id="9_vl5w5"]
+[ext_resource type="Script" uid="uid://3m8ha7ligv6m" path="res://objects/Player/scripts/slide.gd" id="10_c6no5"]
+[ext_resource type="Script" uid="uid://7cgavgo0oaeu" path="res://objects/Player/scripts/block.gd" id="11_l5urc"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gndvh"]
-radius = 0.06542969
-height = 0.27078247
+[sub_resource type="BoxShape3D" id="BoxShape3D_vl5w5"]
+size = Vector3(0.09350586, 0.23120117, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gndvh"]
 atlas = ExtResource("2_3voyg")
@@ -281,7 +283,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"block",
-"speed": 10.0
+"speed": 17.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -436,7 +438,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"slide",
-"speed": 12.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -472,8 +474,8 @@ shadow_opacity = 0.18
 omni_range = 0.48355135
 
 [node name="body_collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16630554, 0)
-shape = SubResource("CapsuleShape3D_gndvh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012573242, -0.16545105, 0)
+shape = SubResource("BoxShape3D_vl5w5")
 
 [node name="sprites" type="AnimatedSprite3D" parent="."]
 billboard = 1
@@ -481,7 +483,7 @@ shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0thri")
-animation = &"idle"
+animation = &"block"
 autoplay = "idle"
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -506,4 +508,16 @@ metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
 [node name="fall" type="Node" parent="StateMachine"]
 script = ExtResource("7_b20bf")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="jump" type="Node" parent="StateMachine"]
+script = ExtResource("9_vl5w5")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="slide" type="Node" parent="StateMachine"]
+script = ExtResource("10_c6no5")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="block" type="Node" parent="StateMachine"]
+script = ExtResource("11_l5urc")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"

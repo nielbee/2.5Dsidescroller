@@ -55,6 +55,7 @@ animations = [{
 
 [node name="shop" type="AnimatedSprite3D"]
 material_overlay = ExtResource("1_nycx6")
+billboard = 1
 sprite_frames = SubResource("SpriteFrames_qi3e4")
 autoplay = "default"
 frame_progress = 0.96315163
