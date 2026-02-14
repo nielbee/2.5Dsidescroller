@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://dk1qee7bnywmw"]
+[gd_scene format=3 uid="uid://dk1qee7bnywmw"]
 
 [ext_resource type="Script" uid="uid://db0jcve473eo5" path="res://objects/Player/scripts/player.gd" id="1_6cwl5"]
 [ext_resource type="Texture2D" uid="uid://cl6okq46e872d" path="res://assets/character/png/red/char_red_1.png" id="2_3voyg"]
@@ -13,9 +13,11 @@
 [ext_resource type="Script" uid="uid://7cgavgo0oaeu" path="res://objects/Player/scripts/block.gd" id="11_l5urc"]
 [ext_resource type="Script" uid="uid://lsnelmgfjfsi" path="res://objects/Player/scripts/attack_1.gd" id="12_637ke"]
 [ext_resource type="Script" uid="uid://ckw80l7kuylh1" path="res://objects/Player/scripts/attack_2.gd" id="13_6bo4k"]
+[ext_resource type="Script" uid="uid://bod85skkfwhif" path="res://objects/Player/scripts/wallslide.gd" id="14_15whd"]
+[ext_resource type="Script" uid="uid://dx8xjdpcgb54t" path="res://objects/Player/scripts/walljump.gd" id="15_6a83f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vl5w5"]
-size = Vector3(0.09350586, 0.23120117, 1)
+size = Vector3(0.20736694, 0.23120117, 0.36706543)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gndvh"]
 atlas = ExtResource("2_3voyg")
@@ -489,70 +491,76 @@ scale_curve = SubResource("CurveTexture_15whd")
 [sub_resource type="QuadMesh" id="QuadMesh_40r7n"]
 size = Vector2(0.02, 0.02)
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" unique_id=401573356]
 collision_mask = 2
 script = ExtResource("1_6cwl5")
 
-[node name="body_collider" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012573242, -0.16545105, 0)
+[node name="body_collider" type="CollisionShape3D" parent="." unique_id=800604525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016464233, -0.16545105, -0.003479004)
 shape = SubResource("BoxShape3D_vl5w5")
 
-[node name="sprites" type="AnimatedSprite3D" parent="."]
+[node name="sprites" type="AnimatedSprite3D" parent="." unique_id=901871020]
 billboard = 1
 shaded = true
 alpha_cut = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0thri")
-animation = &"slide"
+animation = &"wall_hang"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=478721537]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33026826, 1.5584555)
 attributes = ExtResource("4_i118q")
 fov = 63.0
 size = 4.658
 near = 0.002
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=1290848983 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jp6ib")
 initial_state = NodePath("fall")
 metadata/_custom_type_script = "uid://dy1sdl4vn68of"
 
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="StateMachine" unique_id=1338447308]
 script = ExtResource("5_b20bf")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="run" type="Node" parent="StateMachine"]
+[node name="run" type="Node" parent="StateMachine" unique_id=637142876]
 script = ExtResource("6_fca01")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="fall" type="Node" parent="StateMachine"]
+[node name="fall" type="Node" parent="StateMachine" unique_id=1968599528]
 script = ExtResource("7_b20bf")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="jump" type="Node" parent="StateMachine"]
+[node name="jump" type="Node" parent="StateMachine" unique_id=1200922326]
 script = ExtResource("9_vl5w5")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="slide" type="Node" parent="StateMachine"]
+[node name="slide" type="Node" parent="StateMachine" unique_id=236454232]
 script = ExtResource("10_c6no5")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="block" type="Node" parent="StateMachine"]
+[node name="block" type="Node" parent="StateMachine" unique_id=1958981726]
 script = ExtResource("11_l5urc")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="attack1" type="Node" parent="StateMachine"]
+[node name="attack1" type="Node" parent="StateMachine" unique_id=1075090535]
 script = ExtResource("12_637ke")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="attack2" type="Node" parent="StateMachine"]
+[node name="attack2" type="Node" parent="StateMachine" unique_id=866725523]
 script = ExtResource("13_6bo4k")
 metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
 
-[node name="slideParticle" type="GPUParticles3D" parent="."]
+[node name="wallslide" type="Node" parent="StateMachine" unique_id=217096950]
+script = ExtResource("14_15whd")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="walljump" type="Node" parent="StateMachine" unique_id=1850415222]
+script = ExtResource("15_6a83f")
+metadata/_custom_type_script = "uid://cmrgkl71nb4lu"
+
+[node name="slideParticle" type="GPUParticles3D" parent="." unique_id=1212435596]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25695163, 0)
 material_override = SubResource("StandardMaterial3D_6bo4k")
 emitting = false

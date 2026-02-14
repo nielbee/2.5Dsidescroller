@@ -9,3 +9,4 @@ func enter()->void:
 func update(_delta:float)->void:
 	if body.is_on_floor():
 		statemanager.change_state("idle")
+	

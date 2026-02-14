@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0ycuh0wyftko"
-path.s3tc="res://.godot/imported/shop_anim.png-4ef9e0a3b312de25b451415cdf8dc97a.s3tc.ctex"
+path.s3tc="res://.godot/imported/shop_anim.png-da28cf89ea79e28e137fe17bf1028fe6.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/decorations/shop_anim.png"
-dest_files=["res://.godot/imported/shop_anim.png-4ef9e0a3b312de25b451415cdf8dc97a.s3tc.ctex"]
+source_file="res://assets/Decorations/shop_anim.png"
+dest_files=["res://.godot/imported/shop_anim.png-da28cf89ea79e28e137fe17bf1028fe6.s3tc.ctex"]
 
 [params]
 
